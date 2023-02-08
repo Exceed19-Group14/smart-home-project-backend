@@ -16,7 +16,7 @@ class SetAutoModel(BaseModel):
     mode: ModeEnum
 
 
-@router.put('/{id}/auto', status_code=status.HTTP_204_NO_CONTENT)
+@router.put('/{id}/mode', status_code=status.HTTP_204_NO_CONTENT)
 def setAuto(id: int, dto: SetAutoModel):
     db.get_collection('rooms').update_one({
         "id": id
