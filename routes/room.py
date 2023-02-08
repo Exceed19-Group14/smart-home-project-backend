@@ -22,7 +22,7 @@ class SetBrightnessLevel(BaseModel):
 
 
 @router.put('/{id}/mode', status_code=status.HTTP_204_NO_CONTENT)
-def set_auto(id: int, dto: SetAutoModel):
+def set_mode(id: int, dto: SetAutoModel):
     db.get_collection('rooms').update_one({
         "id": id
     }, {
