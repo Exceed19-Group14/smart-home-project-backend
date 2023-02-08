@@ -41,3 +41,13 @@ def set_state(id: int, dto: SetBrightnessLevel):
         }
     })
 
+
+@router.put('/{id}/brightness', status_code=status.HTTP_204_NO_CONTENT)
+def set_brightness(id: int, dto: SetBrightnessLevel):
+    db.get_collection('rooms').update_one({
+        "id": id
+    }, {
+        "$set": {
+            "brightness": dto.brightness_level
+        }
+    })
