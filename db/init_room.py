@@ -13,8 +13,9 @@ try:
     print("Connected to MongoDB")
 except:
     print("Unable to connect MongoDB")
-
-client.get_database(MONGO_DB).get_collection("rooms").insert_many([{
+db = client.get_database(MONGO_DB)
+db.get_collection("rooms").delete_many({})
+db.get_collection("rooms").insert_many([{
     "id": i,
     "brightness_level": 127,
     "state": 0,
