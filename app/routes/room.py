@@ -1,6 +1,6 @@
 from fastapi import APIRouter, status
 from pydantic import BaseModel
-from db.mongo import db
+from app.db.mongo import db
 from enum import IntEnum
 from typing import List
 
@@ -39,12 +39,9 @@ class RoomModel(BaseModel):
     brightness_level: int
 
 
-@router.get('/{id}', status_code=status.HTTP_200_OK, response_model=List[RoomModel])
-def get_room(id: int):
-    docs = list(db.get_collection('rooms').find({
-        "id": id
-    }, {"_id": False}))
-
+@router.get('/', status_code=status.HTTP_200_OK, response_model=List[RoomModel])
+def get_room():
+    docs = list(db.get_collection('rooms').find())
     return docs
 
 
