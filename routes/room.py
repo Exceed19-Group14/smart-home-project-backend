@@ -15,13 +15,14 @@ class ModeEnum(IntEnum):
 class SetAutoModel(BaseModel):
     mode: ModeEnum
 
+
 class SetBrightnessLevel(BaseModel):
     state: int
     brightness_level: int
 
 
 @router.put('/{id}/mode', status_code=status.HTTP_204_NO_CONTENT)
-def setAuto(id: int, dto: SetAutoModel):
+def set_auto(id: int, dto: SetAutoModel):
     db.get_collection('rooms').update_one({
         "id": id
     }, {
