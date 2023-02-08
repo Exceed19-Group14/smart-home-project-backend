@@ -1,9 +1,8 @@
 from fastapi import FastAPI
+from routes.room import router as RoomRouter
 
 
 app = FastAPI()
 
 
-@app.get("/")
-def hello_world():
-    return "Hello World"
+app.include_router(RoomRouter)
