@@ -36,7 +36,7 @@ class RoomModel(BaseModel):
     id: int
     state: StateEnum
     mode: ModeEnum
-    brightness_level: SetBrightnessLevel
+    brightness_level: int
 
 
 @router.get('/{id}', status_code=status.HTTP_200_OK, response_model=List[RoomModel])
